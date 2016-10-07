@@ -3,9 +3,14 @@ import {connect} from 'react-redux';
 
 export default function(ComposedComponent){
   class Authentication extends Component{
-    render(){
-      console.log(this.props.authenticated); 
+    //this is a class level property
+    //anytihng can reference Authentication.contextTypes now
+    static contextTypes = {
+      router: React.PropTypes.object 
+    }
 
+    render(){
+      console.log(this.context); 
       return <ComposedComponent {...this.props} /> 
     }
   }
